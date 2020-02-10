@@ -1,0 +1,147 @@
+body {
+    background-image: linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%);
+    font-family: 'Noto Serif TC', serif;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.player {
+    display: inline-block;
+    margin: 0 auto;
+    width: 340px;
+    border-radius: 10px;
+    background-color: #272727;
+    color: #FFF;
+    padding-top: 2rem;
+}
+
+.song_pic {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.song_pic img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.song_name {
+    display: block;
+    font-size: 18px;
+    font-weight: 300;
+    max-width: 200px;
+    height: 52px;
+    margin: 20px auto;
+}
+
+.song_bar {
+    margin: 0 auto;
+    border-radius: 2px;
+    width: 80%;
+    height: 10px;
+    background-color: #fff;
+    position: relative;
+    cursor: pointer;
+}
+
+.time {
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%);
+}
+
+.song_time {
+    margin-top: 10px;
+}
+
+.song_btn {
+    font-size: 1.2em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 25px;
+}
+
+.song_btn i:hover {
+    transform: translateY(-3px);
+}
+
+.song_btn i {
+    cursor: pointer;
+    transition: .3s;
+    width: 24px;
+}
+
+#audio {
+    display: none;
+}
+
+
+/*歌單*/
+
+.musicList {
+    position: absolute;
+    width: 340px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: #272727;
+    color: #fff;
+    margin: 0 auto;
+    list-style: none;
+    padding: 10px 0;
+    top: 0px;
+    z-index: -1;
+    transition: .5s;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+
+/*滾動條樣式*/
+
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #211f22;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(68, 66, 66);
+    border-radius: 0 10px 10px 0;
+}
+
+.musicList option {
+    cursor: pointer;
+    padding: 5px;
+    margin: 10px 10px;
+}
+
+.musicList option:hover {
+    color: red;
+}
+
+.red {
+    color: red;
+}
