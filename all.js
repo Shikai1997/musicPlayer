@@ -168,7 +168,6 @@ function Load() {
     let Loading = setInterval(() => { //load完再播放
         if (audio.readyState >= 2)
             play();
-        console.log("ok")
         clearInterval(Loading);
     }, 100)
 }
