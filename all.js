@@ -158,7 +158,10 @@ function selectmusic(e) {
     song.src = e.target.title;
     song.title = e.target.innerText;
     song_name.innerText = song.title;
-    Load();
+    setTimeout(() => {
+        Load();
+    }, 100)
+
 }
 
 //load
@@ -166,8 +169,9 @@ function Load() {
     audio.load();
     closeList();
     let Loading = setInterval(() => { //load完再播放
-        if (audio.readyState == 4)
+        if (audio.readyState == 4) {
             play();
-        clearInterval(Loading);
-    }, 100)
+            clearInterval(Loading);
+        }
+    }, 10)
 }
