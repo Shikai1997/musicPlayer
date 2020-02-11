@@ -132,13 +132,13 @@ body {
     border-radius: 0 10px 10px 0;
 }
 
-.musicList option {
+.musicList li {
     cursor: pointer;
     padding: 5px;
     margin: 10px 10px;
 }
 
-.musicList option:hover {
+.musicList li:hover {
     color: red;
 }
 

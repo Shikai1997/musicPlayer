@@ -45,9 +45,9 @@ function Playstatus() {
 }
 //轉換時間
 function formatSecond(secs) {
-    var h = Math.floor(secs / 3600);
-    var min = Math.floor((secs - (h * 3600)) / 60);
-    var sec = parseInt(secs - (h * 3600) - (min * 60));
+    let h = Math.floor(secs / 3600);
+    let min = Math.floor((secs - (h * 3600)) / 60);
+    let sec = parseInt(secs - (h * 3600) - (min * 60));
     min = (min < 10) ? "0" + min : min;
     sec = (sec < 10) ? "0" + sec : sec;
     return min + ":" + sec;
@@ -61,10 +61,11 @@ function getDuration() {
     time.style.width = Math.floor(audio.currentTime / audio.duration * 100) + "%";
 
     if (audio.currentTime <= audio.duration && playbtn.className == "fas fa-pause") {
+        //自動換下一首
         if (audio.currentTime == audio.duration) {
-            pause();
+            nextmusic();
         }
-        setTimeout("getDuration()", "100");
+        setTimeout("getDuration()", 100);
     };
 }
 
@@ -107,12 +108,12 @@ function nextmusic() {
     for (let i = 0; i < musicList.children.length; i++) {
         if (nowmusic == musicList.children[i].innerText) {
             if (i == musicList.children.length - 1) {
-                song.src = musicList.children[0].value;
+                song.src = musicList.children[0].title;
                 song.title = musicList.children[0].innerText;
                 song_name.innerText = musicList.children[0].title;
                 Load();
             } else {
-                song.src = musicList.children[i + 1].value;
+                song.src = musicList.children[i + 1].title;
                 song.title = musicList.children[i + 1].innerText;
                 song_name.innerText = musicList.children[i + 1].title;
                 Load();
@@ -128,12 +129,12 @@ function prevmusic() {
     for (let i = 0; i < musicList.children.length; i++) {
         if (nowmusic == musicList.children[i].innerText) {
             if (i == 0) {
-                song.src = musicList.children[musicList.children.length - 1].value;
+                song.src = musicList.children[musicList.children.length - 1].title;
                 song.title = musicList.children[musicList.children.length - 1].innerText;
                 song_name.innerText = musicList.children[musicList.children.length - 1].title;
                 Load();
             } else {
-                song.src = musicList.children[i - 1].value;
+                song.src = musicList.children[i - 1].title;
                 song.title = musicList.children[i - 1].innerText;
                 song_name.innerText = musicList.children[i - 1].title;
                 Load();
@@ -153,7 +154,8 @@ settime.addEventListener("click", function(evnt) {
 
 //切換音樂
 function selectmusic(e) {
-    song.src = e.target.value;
+
+    song.src = e.target.title;
     song.title = e.target.innerText;
     song_name.innerText = song.title;
     Load();
@@ -164,6 +166,7 @@ function Load() {
     audio.load();
     closeList();
     setTimeout(() => { //load完再播放
-        play();
-    }, 1000)
+        if (audio.readyState >= 2)
+            play();
+    }, 100)
 }
