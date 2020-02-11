@@ -59,7 +59,9 @@ function getDuration() {
     currentTime = formatSecond(audio.currentTime);
     song_time.innerText = currentTime + "/" + durationTime;
     time.style.width = Math.floor(audio.currentTime / audio.duration * 100) + "%";
-
+    if (durationTime == "NaN:NaN") {
+        durationTime = 00 / 00;
+    }
     if (audio.currentTime <= audio.duration && playbtn.className == "fas fa-pause") {
         //自動換下一首
         if (audio.currentTime == audio.duration) {
@@ -158,6 +160,7 @@ function selectmusic(e) {
     song.src = e.target.title;
     song.title = e.target.innerText;
     song_name.innerText = song.title;
+    getDuration();
     setTimeout(() => {
         Load();
     }, 100)
