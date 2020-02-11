@@ -169,9 +169,12 @@ function Load() {
     audio.load();
     closeList();
     let Loading = setInterval(() => { //load完再播放
+
         if (audio.readyState == 4) {
+            console.log("ok");
             play();
             clearInterval(Loading);
         }
+        console.log("no");
     }, 10)
 }
