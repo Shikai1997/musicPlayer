@@ -165,8 +165,10 @@ function selectmusic(e) {
 function Load() {
     audio.load();
     closeList();
-    setTimeout(() => { //load完再播放
+    let Loading = setInterval(() => { //load完再播放
         if (audio.readyState >= 2)
             play();
+        console.log("ok")
+        clearInterval(Loading);
     }, 100)
 }
