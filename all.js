@@ -165,5 +165,5 @@ function Load() {
     closeList();
     setTimeout(() => { //load完再播放
         play();
-    }, 500)
+    }, 1000)
 }
