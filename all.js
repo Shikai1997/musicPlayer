@@ -111,11 +111,13 @@ function nextmusic() {
                 song.title = musicList.children[0].innerText;
                 song_name.innerText = musicList.children[0].innerText;
                 Load();
+                play();
             } else {
                 song.src = musicList.children[i + 1].title;
                 song.title = musicList.children[i + 1].innerText;
                 song_name.innerText = musicList.children[i + 1].innerText;
                 Load();
+                play();
             }
 
         }
@@ -132,11 +134,13 @@ function prevmusic() {
                 song.title = musicList.children[musicList.children.length - 1].innerText;
                 song_name.innerText = musicList.children[musicList.children.length - 1].innerText;
                 Load();
+                play();
             } else {
                 song.src = musicList.children[i - 1].title;
                 song.title = musicList.children[i - 1].innerText;
                 song_name.innerText = musicList.children[i - 1].innerText;
                 Load();
+                play();
             }
 
         }
@@ -157,8 +161,13 @@ function selectmusic(e) {
     song.src = e.target.title;
     song.title = e.target.innerText;
     song_name.innerText = song.title;
-    getDuration();
     Load();
+    console.log(audio.readyState)
+    setTimeout(() => {
+        console.log(audio.readyState)
+        play();
+    }, 100);
+
 
 }
 
@@ -166,13 +175,4 @@ function selectmusic(e) {
 function Load() {
     audio.load();
     closeList();
-    let Loading = setInterval(() => { //load完再播放
-
-        if (audio.readyState == 4) {
-            console.log("ok");
-            play();
-            clearInterval(Loading);
-        }
-        console.log("no");
-    }, 10)
 }
