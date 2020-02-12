@@ -109,15 +109,19 @@ function nextmusic() {
             if (i == musicList.children.length - 1) {
                 song.src = musicList.children[0].title;
                 song.title = musicList.children[0].innerText;
-                song_name.innerText = musicList.children[0].innerText;
+                song_name.innerText = song.title;
                 Load();
-                play();
+                setTimeout(() => {
+                    play();
+                }, 500);
             } else {
                 song.src = musicList.children[i + 1].title;
                 song.title = musicList.children[i + 1].innerText;
-                song_name.innerText = musicList.children[i + 1].innerText;
+                song_name.innerText = song.title;
                 Load();
-                play();
+                setTimeout(() => {
+                    play();
+                }, 500);
             }
 
         }
@@ -132,15 +136,19 @@ function prevmusic() {
             if (i == 0) {
                 song.src = musicList.children[musicList.children.length - 1].title;
                 song.title = musicList.children[musicList.children.length - 1].innerText;
-                song_name.innerText = musicList.children[musicList.children.length - 1].innerText;
+                song_name.innerText = song.title;
                 Load();
-                play();
+                setTimeout(() => {
+                    play();
+                }, 500);
             } else {
                 song.src = musicList.children[i - 1].title;
                 song.title = musicList.children[i - 1].innerText;
-                song_name.innerText = musicList.children[i - 1].innerText;
+                song_name.innerText = song.title;
                 Load();
-                play();
+                setTimeout(() => {
+                    play();
+                }, 500);
             }
 
         }
@@ -162,17 +170,9 @@ function selectmusic(e) {
     song.title = e.target.innerText;
     song_name.innerText = song.title;
     Load();
-    console.log(audio.duration)
-    let checkload = setInterval(() => {
-        if (audio.readyState != 4) {
-            console.log(audio.duration);
-            audio.currentTime = "loading";
-        } else {
-            play();
-            clearInterval(checkload)
-        }
-    }, 100);
-
+    setTimeout(() => {
+        play();
+    }, 500);
 
 }
 
