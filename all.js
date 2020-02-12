@@ -109,12 +109,12 @@ function nextmusic() {
             if (i == musicList.children.length - 1) {
                 song.src = musicList.children[0].title;
                 song.title = musicList.children[0].innerText;
-                song_name.innerText = musicList.children[0].title;
+                song_name.innerText = musicList.children[0].innerText;
                 Load();
             } else {
                 song.src = musicList.children[i + 1].title;
                 song.title = musicList.children[i + 1].innerText;
-                song_name.innerText = musicList.children[i + 1].title;
+                song_name.innerText = musicList.children[i + 1].innerText;
                 Load();
             }
 
@@ -130,12 +130,12 @@ function prevmusic() {
             if (i == 0) {
                 song.src = musicList.children[musicList.children.length - 1].title;
                 song.title = musicList.children[musicList.children.length - 1].innerText;
-                song_name.innerText = musicList.children[musicList.children.length - 1].title;
+                song_name.innerText = musicList.children[musicList.children.length - 1].innerText;
                 Load();
             } else {
                 song.src = musicList.children[i - 1].title;
                 song.title = musicList.children[i - 1].innerText;
-                song_name.innerText = musicList.children[i - 1].title;
+                song_name.innerText = musicList.children[i - 1].innerText;
                 Load();
             }
 
@@ -158,9 +158,7 @@ function selectmusic(e) {
     song.title = e.target.innerText;
     song_name.innerText = song.title;
     getDuration();
-    setTimeout(() => {
-        Load();
-    }, 500)
+    Load();
 
 }
 
