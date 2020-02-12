@@ -162,10 +162,15 @@ function selectmusic(e) {
     song.title = e.target.innerText;
     song_name.innerText = song.title;
     Load();
-    console.log(audio.readyState)
-    setTimeout(() => {
-        console.log(audio.readyState)
-        play();
+    console.log(audio.duration)
+    let checkload = setInterval(() => {
+        if (audio.readyState != 4) {
+            console.log(audio.duration);
+            audio.currentTime = "loading";
+        } else {
+            play();
+            clearInterval(checkload)
+        }
     }, 100);
 
 
